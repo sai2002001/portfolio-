@@ -3,1419 +3,1077 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050c1d">
 <title>J. Sai Gajendra | Data Analyst Portfolio</title>
-<meta name="description" content="J. Sai Gajendra - Data Analyst portfolio featuring Power BI, DAX, Excel, SQL, MIS reporting and analytics projects.">
-<meta name="keywords" content="Data Analyst, Power BI, DAX, Excel, SQL, MIS Analyst, Business Intelligence, Dashboard">
+<meta name="description" content="J. Sai Gajendra is a Data Analyst specializing in Power BI, DAX, Excel, SQL, data analysis, data visualization and reporting.">
+<meta name="keywords" content="Data Analyst, Power BI, DAX, Excel, SQL, Data Visualization, Reporting, Dashboard">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a1a38'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='%2322d3ee' text-anchor='middle'%3EJS%3C/text%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ==========================================================================
-   J. Sai Gajendra — Data Analyst Portfolio
-   Design tokens: white/navy/royal-blue base, small red/orange accent,
-   Space Grotesk for display, Inter for body, IBM Plex Mono for data labels.
+   J. Sai Gajendra — Data Analyst Portfolio (2 pages, one file)
+   Page 1: #home        Page 2: #portfolio (+ #about … #contact)
+   Theme: dark navy, transparent glass panels, blue/cyan hairline glow.
    ========================================================================== */
 
 :root {
-  --white:        #ffffff;
-  --ink:          #10192b;      /* near-black navy text */
-  --navy:         #0b2545;      /* deep navy */
-  --royal:        #2455a4;      /* royal blue */
-  --royal-dark:   #1a3f7f;
-  --grey-bg:      #f4f6fa;      /* subtle grey section tint */
-  --grey-line:    #dde3ec;
-  --grey-text:    #55617a;
-  --accent:       #d6531f;      /* small orange/red accent */
+  --bg:         #050c1d;
+  --navy:       #0a1a38;
+  --blue:       #3b82f6;
+  --sky:        #7dd3fc;
+  --cyan:       #22d3ee;
+  --text:       #e8eefb;
+  --muted:      #a3b4cf;
+  --line:       rgba(94, 190, 240, .22);
+  --line-soft:  rgba(94, 190, 240, .13);
+  --glass-a:    rgba(255, 255, 255, .075);
+  --glass-b:    rgba(255, 255, 255, .025);
 
-  --font-display: "Space Grotesk", "Inter", sans-serif;
-  --font-body:    "Inter", -apple-system, sans-serif;
-  --font-mono:    "IBM Plex Mono", monospace;
+  --display: "Sora", "Segoe UI", system-ui, sans-serif;
+  --body:    "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono:    "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
-  --max-width: 1120px;
-  --radius: 10px;
-  --radius-sm: 6px;
+  --header-h: 86px;
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 
-html {
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
-}
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  font-family: var(--font-body);
-  color: var(--ink);
-  background: var(--white);
-  line-height: 1.6;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4 {
-  font-family: var(--font-display);
-  color: var(--navy);
-  margin: 0 0 0.5em;
-  line-height: 1.15;
-}
-
-p { margin: 0 0 1em; color: var(--ink); }
-
-a { color: var(--royal); }
-
+h1, h2, h3, h4 { font-family: var(--display); margin: 0; line-height: 1.15; color: #fff; }
+p  { margin: 0 0 1em; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+a  { color: var(--sky); }
 img { max-width: 100%; display: block; }
+button { font: inherit; color: inherit; }
 
-ul { padding: 0; margin: 0; list-style: none; }
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 6px; }
+[tabindex="-1"]:focus { outline: none; }
+
+.container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
 .skip-link {
-  position: absolute;
-  left: -999px;
-  top: 0;
-  background: var(--navy);
-  color: var(--white);
-  padding: 0.75em 1.25em;
-  z-index: 200;
+  position: absolute; left: -999px; top: 8px; z-index: 300;
+  background: var(--cyan); color: #04101f; padding: 10px 16px; border-radius: 8px; font-weight: 600;
 }
-.skip-link:focus {
-  left: 1em;
-  top: 1em;
+.skip-link:focus { left: 12px; }
+
+.ic {
+  width: 1.15em; height: 1.15em; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
 }
 
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+/* ---------- Background: navy field + fine measurement grid ---------- */
+
+.bg { position: fixed; inset: 0; z-index: -1; overflow: hidden;
+  background:
+    radial-gradient(900px 620px at 12% 8%,  rgba(37, 99, 235, .30), transparent 62%),
+    radial-gradient(760px 560px at 92% 18%, rgba(34, 211, 238, .13), transparent 62%),
+    radial-gradient(1000px 700px at 55% 112%, rgba(29, 78, 216, .26), transparent 62%),
+    linear-gradient(180deg, #040a18 0%, #071227 52%, #050c1d 100%);
 }
-
-.section-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 24px;
+.bg-grid, .bg-dots { position: absolute; inset: 0; }
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(94, 190, 240, .07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 190, 240, .07) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 25%, transparent 80%);
+          mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 25%, transparent 80%);
 }
-
-/* ---------- Header ---------- */
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--grey-line);
+.bg-dots {
+  background-image: radial-gradient(rgba(125, 211, 252, .22) 1px, transparent 1.3px);
+  background-size: 28px 28px; background-position: 14px 14px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 80% 90%, #000 0%, transparent 75%);
+          mask-image: radial-gradient(ellipse 60% 50% at 80% 90%, #000 0%, transparent 75%);
 }
-
-.header-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 14px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+/* axis rulers along the left and bottom edges */
+.bg-ruler-y, .bg-ruler-x { position: absolute; opacity: .9; }
+.bg-ruler-y {
+  left: 0; top: 0; bottom: 0; width: 14px;
+  background:
+    repeating-linear-gradient(to bottom, rgba(125,211,252,.30) 0 1px, transparent 1px 12px) left / 6px 100% no-repeat,
+    repeating-linear-gradient(to bottom, rgba(125,211,252,.55) 0 1px, transparent 1px 60px) left / 13px 100% no-repeat;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent);
 }
-
-.brand {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.15rem;
-  color: var(--navy);
-  text-decoration: none;
-  white-space: nowrap;
+.bg-ruler-x {
+  left: 0; right: 0; bottom: 0; height: 14px;
+  background:
+    repeating-linear-gradient(to right, rgba(125,211,252,.30) 0 1px, transparent 1px 12px) bottom / 100% 6px no-repeat,
+    repeating-linear-gradient(to right, rgba(125,211,252,.55) 0 1px, transparent 1px 60px) bottom / 100% 13px no-repeat;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 20%, #000 80%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 20%, #000 80%, transparent);
 }
+@media (max-width: 720px) { .bg-ruler-y, .bg-ruler-x { display: none; } .bg-grid { background-size: 44px 44px; } }
 
-.main-nav {
-  display: flex;
-  gap: 28px;
+/* ---------- Glass ---------- */
+
+.glass {
+  position: relative;
+  background: linear-gradient(145deg, var(--glass-a), var(--glass-b));
+  border: 1px solid var(--line);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+          backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 18px 50px rgba(2, 8, 28, .55), 0 0 34px rgba(34, 211, 238, .06);
 }
-
-.nav-link {
-  color: var(--ink);
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  padding: 6px 2px;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.15s ease, color 0.15s ease;
+/* glowing gradient edge */
+.glass::after {
+  content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: linear-gradient(135deg, rgba(34,211,238,.65), rgba(34,211,238,0) 32%, rgba(59,130,246,0) 66%, rgba(59,130,246,.6));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+          mask-composite: exclude;
+  opacity: .55; transition: opacity .35s ease;
 }
-
-.nav-link:hover,
-.nav-link.active {
-  color: var(--royal);
-  border-bottom-color: var(--royal);
+.glass:hover::after { opacity: .95; }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: rgba(12, 26, 56, .9); }
 }
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 34px;
-  height: 34px;
-  background: none;
-  border: 1px solid var(--grey-line);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-}
-
-.hamburger span {
-  display: block;
-  height: 2px;
-  width: 18px;
-  margin: 0 auto;
-  background: var(--navy);
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ---------- Buttons ---------- */
 
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 12px 22px;
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-decoration: none;
-  border-radius: var(--radius-sm);
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 13px 24px; border-radius: 999px; text-decoration: none; cursor: pointer;
+  font-family: var(--display); font-weight: 600; font-size: .95rem; letter-spacing: .01em;
+  border: 1px solid transparent; white-space: nowrap;
+  transition: transform .2s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
 }
-
 .btn-primary {
-  background: var(--navy);
-  color: var(--white);
-}
-.btn-primary:hover { background: var(--royal-dark); }
-
-.btn-outline {
-  background: transparent;
-  border-color: var(--navy);
-  color: var(--navy);
-}
-.btn-outline:hover { background: var(--navy); color: var(--white); }
-
-.btn-small {
-  padding: 8px 16px;
-  font-size: 0.85rem;
-}
-
-/* ---------- Hero ---------- */
-
-.hero {
-  position: relative;
-  padding: 96px 24px 72px;
-  overflow: hidden;
-  background: var(--white);
-}
-
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--grey-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grey-line) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 80% 60% at 70% 20%, black 0%, transparent 70%);
-  opacity: 0.6;
-}
-
-.hero-inner {
-  position: relative;
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.02em;
-  color: var(--royal);
-  margin-bottom: 14px;
-}
-
-.hero-name {
-  font-size: clamp(2.4rem, 5vw, 3.6rem);
-  font-weight: 700;
-  max-width: 14ch;
-}
-
-.hero-headline {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  color: var(--royal);
-  font-weight: 500;
-  margin-bottom: 20px;
-}
-
-.hero-desc {
-  max-width: 62ch;
-  font-size: 1.05rem;
-  color: var(--grey-text);
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin: 28px 0 48px;
-}
-
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0;
-  border-top: 1px solid var(--grey-line);
-  padding-top: 24px;
-  max-width: 760px;
-}
-
-.hero-stat {
-  padding-right: 16px;
-  border-left: 2px solid var(--accent);
-  padding-left: 14px;
-}
-
-.hero-stat dt {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--grey-text);
-  text-transform: none;
-  margin-bottom: 4px;
-}
-
-.hero-stat dd {
-  margin: 0;
-  font-weight: 600;
-  color: var(--navy);
-  font-size: 1.02rem;
-}
-
-/* ---------- Sections ---------- */
-
-.section {
-  padding: 72px 0;
-}
-
-.section-tinted {
-  background: var(--grey-bg);
-}
-
-.section-head {
-  margin-bottom: 36px;
-}
-
-.section-head h2 {
-  font-size: 1.9rem;
-}
-
-/* ---------- About ---------- */
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 40px;
-}
-
-.about-body {
-  max-width: 68ch;
-  color: var(--grey-text);
-}
-
-.about-body p:first-child { color: var(--ink); }
-
-/* ---------- Skills ---------- */
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.skill-card {
-  background: var(--white);
-  border: 1px solid var(--grey-line);
-  border-radius: var(--radius);
-  padding: 22px;
-}
-
-.skill-card h3 {
-  font-size: 1rem;
-  margin-bottom: 14px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--grey-line);
-}
-
-.tag-list li {
-  font-size: 0.9rem;
-  color: var(--ink);
-  padding: 6px 0;
-  position: relative;
-  padding-left: 14px;
-}
-
-.tag-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 14px;
-  width: 6px;
-  height: 6px;
-  background: var(--royal);
-  border-radius: 1px;
-}
-
-/* ---------- Project feature ---------- */
-
-.project-feature {
-  border: 1px solid var(--grey-line);
-  border-radius: var(--radius);
-  padding: 32px;
-  margin-bottom: 40px;
-}
-
-.project-title {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-}
-
-.project-stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  margin: 0 0 24px;
-  padding: 20px 0;
-  border-top: 1px solid var(--grey-line);
-  border-bottom: 1px solid var(--grey-line);
-}
-
-.project-stats dt {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--grey-text);
-  margin-bottom: 4px;
-}
-
-.project-stats dd {
-  margin: 0;
-  font-weight: 700;
-  color: var(--navy);
-  font-size: 1.1rem;
-}
-
-.project-desc {
-  max-width: 76ch;
-  color: var(--grey-text);
-}
-
-.workflow {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  margin: 28px 0;
-}
-
-.workflow-step {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  background: var(--grey-bg);
-  border: 1px solid var(--grey-line);
-  border-left: 3px solid var(--royal);
-  padding: 8px 16px;
-  border-radius: var(--radius-sm);
-  color: var(--navy);
-}
-
-.workflow-step-final {
-  border-left-color: var(--accent);
-  background: var(--white);
-  border-color: var(--accent);
-  font-weight: 600;
-}
-
-.workflow-arrow {
-  color: var(--grey-text);
-  padding-left: 20px;
-  line-height: 1;
-}
-
-.concept-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 20px;
-}
-
-.concept-list li {
-  font-size: 0.82rem;
-  font-family: var(--font-mono);
-  color: var(--royal-dark);
-  background: var(--grey-bg);
-  border: 1px solid var(--grey-line);
-  padding: 5px 10px;
-  border-radius: 999px;
-}
-
-/* ---------- Gallery ---------- */
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-  margin-bottom: 48px;
-}
-
-.gallery-item h4 {
-  font-size: 1rem;
-  margin: 14px 0 6px;
-}
-
-.gallery-item p {
-  font-size: 0.88rem;
-  color: var(--grey-text);
-  margin: 0;
-}
-
-.gallery-trigger {
-  display: block;
-  width: 100%;
-  padding: 0;
-  border: 1px solid var(--grey-line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--grey-bg);
-  cursor: zoom-in;
-  aspect-ratio: 4 / 3;
-  position: relative;
-}
-
-.gallery-trigger img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.placeholder-fallback {
-  display: none;
-  position: absolute;
-  inset: 0;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--grey-text);
-  text-align: center;
-  padding: 12px;
-}
-
-.gallery-item.img-missing .gallery-trigger img { display: none; }
-.gallery-item.img-missing .gallery-trigger { cursor: default; }
-.gallery-item.img-missing .placeholder-fallback { display: flex; }
-
-/* ---------- Project details ---------- */
-
-.project-details {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.detail-card {
-  background: var(--grey-bg);
-  border-radius: var(--radius);
-  padding: 20px;
-}
-
-.detail-card h4 {
-  font-size: 0.95rem;
-  margin-bottom: 10px;
-}
-
-.detail-card p {
-  font-size: 0.88rem;
-  color: var(--grey-text);
-  margin: 0;
-}
-
-.detail-card ul li {
-  font-size: 0.85rem;
-  padding: 3px 0;
-  color: var(--ink);
-}
-
-.tools-inline {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.tools-inline li {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  background: var(--white);
-  border: 1px solid var(--grey-line);
-  padding: 4px 9px;
-  border-radius: 999px;
-}
-
-/* ---------- Experience ---------- */
-
-.experience-card {
-  background: var(--white);
-  border: 1px solid var(--grey-line);
-  border-left: 4px solid var(--royal);
-  border-radius: var(--radius);
-  padding: 28px 32px;
-}
-
-.experience-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
-.experience-top h3 { margin-bottom: 4px; font-size: 1.15rem; }
-
-.experience-org {
-  color: var(--grey-text);
-  margin: 0;
-}
-
-.experience-dates {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--royal);
-  margin: 0;
-  white-space: nowrap;
-}
-
-.experience-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6px 32px;
-}
-
-.experience-list li {
-  font-size: 0.92rem;
-  color: var(--ink);
-  padding: 6px 0;
-  border-top: 1px solid var(--grey-line);
-}
-
-/* ---------- Education ---------- */
-
-.education-card {
-  border: 1px dashed var(--grey-line);
-  border-radius: var(--radius);
-  padding: 24px 28px;
-  max-width: 480px;
-}
-
-.education-card h3 { font-size: 1.1rem; }
-.education-card p { color: var(--grey-text); margin: 0 0 4px; }
-.education-year { font-family: var(--font-mono); font-size: 0.85rem; }
-
-/* ---------- Resume CTA ---------- */
-
-.resume-cta {
-  background: var(--navy);
-}
-
-.resume-cta-inner {
-  text-align: left;
-  max-width: 640px;
-}
-
-.resume-cta h2 { color: var(--white); }
-.resume-cta p { color: #c4cfe0; }
-
-/* ---------- Contact ---------- */
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: start;
-}
-
-.contact-list li {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--grey-line);
-  font-size: 0.95rem;
-}
-
-.contact-list li span:first-child {
-  color: var(--grey-text);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-}
-
-.contact-list a { text-decoration: none; font-weight: 500; }
-
-.contact-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: flex-start;
-}
-
-/* ---------- Footer ---------- */
-
-.site-footer {
-  border-top: 1px solid var(--grey-line);
-  padding: 28px 0;
-}
-
-.footer-inner p {
-  margin: 0;
-  font-size: 0.85rem;
-  color: var(--grey-text);
-}
-
-/* ---------- Back to top ---------- */
-
-.back-to-top {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: none;
-  background: var(--navy);
-  color: var(--white);
-  font-size: 1.1rem;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(8px);
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
-  z-index: 90;
-}
-
-.back-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
+  background: linear-gradient(120deg, #67e8f9, #22d3ee 45%, #38bdf8);
+  color: #04101f;
+  box-shadow: 0 0 0 1px rgba(103,232,249,.5), 0 8px 28px rgba(34, 211, 238, .28);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(103,232,249,.8), 0 12px 34px rgba(34, 211, 238, .42); }
+.btn-ghost {
+  background: rgba(255,255,255,.05); color: #fff; border-color: var(--line);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+}
+.btn-ghost:hover { transform: translateY(-2px); border-color: rgba(34,211,238,.7); background: rgba(34,211,238,.09); box-shadow: 0 0 24px rgba(34,211,238,.18); }
+.btn .ic { width: 1.1em; height: 1.1em; }
+.btn-sm { padding: 9px 18px; font-size: .88rem; }
+
+/* ---------- Top bars (both pages) ---------- */
+
+.topbar { position: sticky; top: 0; z-index: 100; padding: 14px 0; }
+.topbar .container { position: relative; }
+#portfolio-bar { background: linear-gradient(to bottom, rgba(5, 12, 29, .97) 55%, rgba(5, 12, 29, 0)); }
+.topbar-inner.glass { background: linear-gradient(145deg, rgba(16, 34, 72, .86), rgba(8, 18, 42, .82)); }
+.topbar-inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 9px 12px 9px 18px; border-radius: 999px;
+}
+.brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; font-family: var(--display); font-weight: 600; }
+.brand-mark {
+  display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(140deg, rgba(34,211,238,.25), rgba(59,130,246,.25));
+  border: 1px solid rgba(34,211,238,.5); color: var(--cyan); font-size: .85rem; letter-spacing: .02em;
+}
+.brand-name { font-size: .98rem; }
+
+.nav { display: flex; align-items: center; gap: 4px; }
+.nav-link {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px;
+  color: var(--muted); text-decoration: none; font-size: .92rem; font-weight: 500;
+  transition: color .2s ease, background .2s ease;
+}
+.nav-link:hover { color: #fff; background: rgba(94,190,240,.12); }
+.nav-link.is-active { color: #fff; background: rgba(34,211,238,.14); box-shadow: inset 0 0 0 1px rgba(34,211,238,.35); }
+.nav .btn { margin-left: 8px; }
+
+.hamburger {
+  display: none; width: 40px; height: 40px; border-radius: 12px; cursor: pointer;
+  border: 1px solid var(--line); background: rgba(255,255,255,.05); align-items: center; justify-content: center;
+}
+.hamburger .ic { width: 22px; height: 22px; }
+.hamburger .ic-close { display: none; }
+#portfolio-bar.nav-open .hamburger .ic-open  { display: none; }
+#portfolio-bar.nav-open .hamburger .ic-close { display: block; }
+
+/* ---------- Page shell + transitions ---------- */
+
+.page { transition: opacity .26s ease, transform .26s ease; }
+.page.is-leaving  { opacity: 0; transform: translateY(8px); }
+.page.is-entering { animation: pageIn .45s ease both; }
+@keyframes pageIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* ==========================================================================
+   PAGE 1 — HOME
+   ========================================================================== */
+
+.home-main {
+  min-height: calc(100svh - var(--header-h));
+  display: grid; align-items: center; padding: 20px 0 44px;
+}
+.home-main > .container { min-width: 0; }
+.hero-panel {
+  width: 100%; max-width: 940px; margin: 0 auto;
+  padding: clamp(28px, 5.5vw, 68px); border-radius: 28px;
+}
+.hero-panel > * { animation: rise .8s cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--i, 0) * 80ms + 120ms); }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+.welcome { margin: 0 0 clamp(20px, 4vw, 34px); color: var(--cyan); font-family: var(--mono); font-size: .8rem; letter-spacing: .3em; text-transform: uppercase; }
+.hello   { margin: 0 0 4px; color: var(--muted); font-size: clamp(1.05rem, 2.4vw, 1.3rem); }
+.name {
+  font-size: clamp(2.7rem, 9.4vw, 5.8rem); font-weight: 700; letter-spacing: -.03em; line-height: 1.02;
+  color: #fff; margin: 0;
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .name {
+    background: linear-gradient(115deg, #ffffff 18%, #b6e6ff 55%, #38d5f0 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+  }
+}
+.role {
+  margin: clamp(16px, 3vw, 24px) 0 8px; color: var(--cyan);
+  font-family: var(--display); font-weight: 600; font-size: clamp(1rem, 2.4vw, 1.3rem); letter-spacing: .38em;
+}
+.tagline { margin: 0 0 22px; color: var(--text); font-size: clamp(1.1rem, 2.6vw, 1.5rem); font-weight: 500; }
+.tools { display: flex; flex-wrap: wrap; gap: 4px 0; margin: 0; color: var(--muted); font-size: 1rem; }
+.tools li + li::before { content: "•"; color: var(--cyan); margin: 0 12px; }
+
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 14px 40px; margin: clamp(26px, 4vw, 38px) 0 clamp(24px, 4vw, 34px);
+  padding: 20px 0 0; border-top: 1px solid var(--line-soft);
+}
+.meta-item { display: flex; align-items: center; gap: 12px; }
+.meta-item .ic { width: 22px; height: 22px; color: var(--cyan); }
+.meta-item strong { display: block; font-family: var(--display); font-size: 1.15rem; color: #fff; line-height: 1.2; }
+.meta-item span   { display: block; color: var(--muted); font-size: .85rem; }
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* ==========================================================================
+   PAGE 2 — PORTFOLIO
+   ========================================================================== */
+
+.section { padding: 76px 0 8px; scroll-margin-top: calc(var(--header-h) - 6px); }
+.section:last-of-type { padding-bottom: 40px; }
+.section-head { margin-bottom: 30px; max-width: 640px; }
+.section-head h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); letter-spacing: -.02em; }
+.section-head h2::after {
+  content: ""; display: block; width: 56px; height: 3px; margin-top: 14px; border-radius: 3px;
+  background: linear-gradient(90deg, var(--cyan), var(--blue));
+  box-shadow: 0 0 14px rgba(34,211,238,.55);
+}
+.section-head p { margin: 16px 0 0; color: var(--muted); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  padding: 6px 14px; border-radius: 999px; font-size: .88rem; color: var(--text);
+  background: rgba(56, 189, 248, .08); border: 1px solid rgba(94, 190, 240, .28);
+}
+
+/* ----- About ----- */
+.about-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+.about-copy p { color: #d3ddf0; font-size: 1.05rem; max-width: 62ch; }
+.about-copy .chips { margin: 24px 0 28px; }
+.exp-summary { border-radius: 22px; padding: 8px 26px; }
+.exp-summary li { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; padding: 20px 0; }
+.exp-summary li + li { border-top: 1px solid var(--line-soft); }
+.exp-summary strong { font-family: var(--display); font-size: clamp(1.5rem, 3vw, 1.9rem); color: #fff; white-space: nowrap; }
+.exp-summary li:first-child strong { color: var(--cyan); }
+.exp-summary span { color: var(--muted); text-align: right; font-size: .95rem; }
+
+/* ----- Skills ----- */
+.skills-panel { border-radius: 24px; padding: 6px 30px; }
+.skill-row { display: grid; grid-template-columns: 240px 1fr; gap: 12px 32px; padding: 26px 0; align-items: start; }
+.skill-row + .skill-row { border-top: 1px solid var(--line-soft); }
+.skill-row h3 { font-size: 1.08rem; font-weight: 600; padding-top: 4px; }
+
+/* ----- Project ----- */
+.project { border-radius: 26px; padding: clamp(24px, 4vw, 44px); }
+.project-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px 32px; margin-bottom: 20px; }
+.project-title { font-size: clamp(1.4rem, 3vw, 2rem); letter-spacing: -.015em; max-width: 24ch; }
+.project-facts { display: grid; gap: 10px; min-width: 260px; }
+.fact { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; font-size: .92rem; }
+.fact dt { color: var(--muted); min-width: 64px; }
+.fact dd { margin: 0; color: var(--text); }
+.fact .chips { gap: 6px; }
+.fact .chip { padding: 3px 11px; font-size: .82rem; }
+.project-desc { color: #d3ddf0; max-width: 74ch; margin-bottom: 26px; }
+
+.stat-bar { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line-soft); border-radius: 18px; background: rgba(4, 12, 30, .35); }
+.stat-bar div { padding: 20px 24px; }
+.stat-bar div + div { border-left: 1px solid var(--line-soft); }
+.stat-bar dt { color: var(--muted); font-size: .88rem; order: 2; }
+.stat-bar dd { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(1.7rem, 3.4vw, 2.3rem); color: #fff; line-height: 1.1; }
+.stat-bar div { display: flex; flex-direction: column; gap: 6px; }
+
+.workflow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 6px; margin: 28px 0 8px; }
+.workflow li { padding: 7px 12px; border-radius: 10px; font-size: .86rem; color: var(--text); background: rgba(255,255,255,.05); border: 1px solid var(--line-soft); }
+.workflow li + li { position: relative; margin-left: 18px; }
+.workflow li + li::before { content: "→"; position: absolute; left: -17px; top: 50%; transform: translateY(-52%); color: var(--cyan); font-size: .9rem; }
+.workflow li:last-child { border-color: rgba(34,211,238,.5); color: #fff; background: rgba(34,211,238,.1); }
+
+.sub-h { font-size: 1.05rem; margin: 34px 0 14px; }
+
+.capabilities { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-soft); }
+.cap { padding: 22px 26px 4px 0; }
+.cap + .cap { padding-left: 26px; border-left: 1px solid var(--line-soft); }
+.cap h4 { font-size: .98rem; margin-bottom: 12px; color: var(--sky); font-weight: 600; }
+.cap li { position: relative; padding-left: 20px; margin-bottom: 8px; color: #d3ddf0; font-size: .95rem; }
+.cap li::before { content: ""; position: absolute; left: 0; top: .62em; width: 8px; height: 8px; border-radius: 2px; background: var(--cyan); box-shadow: 0 0 8px rgba(34,211,238,.6); }
+
+.dax { display: flex; flex-wrap: wrap; gap: 10px; }
+.dax li {
+  font-family: var(--mono); font-size: .9rem; padding: 9px 16px; border-radius: 10px; color: #c8f3ff;
+  background: rgba(4, 12, 30, .55); border: 1px solid rgba(34,211,238,.35);
+}
+
+/* gallery */
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 8px; }
+.shot { margin: 0; }
+.shot-btn {
+  position: relative; display: block; width: 100%; padding: 0; cursor: zoom-in; text-align: left;
+  border-radius: 16px; overflow: hidden; background: rgba(4, 12, 30, .6); border: 1px solid var(--line);
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+.shot-btn:hover { transform: translateY(-4px); border-color: rgba(34,211,238,.75); box-shadow: 0 16px 40px rgba(2,8,28,.6), 0 0 30px rgba(34,211,238,.22); }
+.shot-frame { position: relative; display: block; aspect-ratio: 16 / 10; }
+.shot-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top left; z-index: 1; }
+.shot-frame.is-missing img { display: none; }
+.shot-ph {
+  position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 8px; text-align: center; padding: 16px;
+  color: var(--muted); font-size: .85rem;
+  background:
+    linear-gradient(rgba(94,190,240,.08) 1px, transparent 1px) 0 0 / 100% 22px,
+    linear-gradient(90deg, rgba(94,190,240,.08) 1px, transparent 1px) 0 0 / 22px 100%;
+}
+.shot-ph .ic { width: 26px; height: 26px; color: var(--cyan); }
+.shot-zoom {
+  position: absolute; right: 10px; bottom: 10px; z-index: 2; display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 999px; font-size: .78rem; color: #fff;
+  background: rgba(4, 12, 30, .72); border: 1px solid rgba(34,211,238,.4);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.shot-zoom .ic { width: 14px; height: 14px; color: var(--cyan); }
+.shot figcaption { padding: 14px 4px 0; }
+.shot h4 { font-size: 1rem; margin-bottom: 4px; }
+.shot p  { margin: 0; color: var(--muted); font-size: .9rem; }
+
+/* ----- Experience ----- */
+.timeline { position: relative; display: grid; gap: 24px; padding-left: 34px; }
+.timeline::before {
+  content: ""; position: absolute; left: 8px; top: 10px; bottom: 10px; width: 2px;
+  background: linear-gradient(to bottom, var(--cyan), rgba(59,130,246,.25));
+}
+.exp { border-radius: 22px; padding: clamp(22px, 3.4vw, 34px); }
+.exp::before {
+  content: ""; position: absolute; left: -33px; top: 34px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--cyan); box-shadow: 0 0 12px rgba(34,211,238,.7);
+}
+.exp-head { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 10px 20px; margin-bottom: 16px; }
+.exp-head h3 { font-size: 1.3rem; }
+.exp-org { margin: 6px 0 0; color: var(--sky); font-weight: 500; }
+.exp-org span { color: var(--muted); font-weight: 400; }
+.exp-dur { padding: 5px 14px; border-radius: 999px; font-size: .85rem; white-space: nowrap; color: #c8f3ff; background: rgba(34,211,238,.1); border: 1px solid rgba(34,211,238,.35); }
+.exp-list li { position: relative; padding-left: 22px; margin-bottom: 9px; color: #d3ddf0; }
+.exp-list li::before { content: ""; position: absolute; left: 0; top: .68em; width: 8px; height: 2px; background: var(--cyan); }
+
+/* ----- Education ----- */
+.edu { border-radius: 22px; padding: 26px 30px; display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; justify-content: space-between; }
+.edu h3 { font-size: 1.25rem; }
+.edu p  { margin: 6px 0 0; color: var(--muted); }
+.edu-year { font-family: var(--display); font-size: 1.6rem; font-weight: 700; color: var(--cyan); }
+
+/* ----- Strengths ----- */
+.strengths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 40px; }
+.strength { display: flex; align-items: center; gap: 16px; padding: 22px 0; border-top: 1px solid var(--line-soft); }
+.strength .ic-wrap { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; flex: none; color: var(--cyan); background: rgba(34,211,238,.09); border: 1px solid rgba(34,211,238,.3); }
+.strength .ic { width: 21px; height: 21px; }
+.strength span { font-family: var(--display); font-weight: 500; font-size: 1.02rem; color: #fff; }
+
+/* ----- Contact ----- */
+.contact { border-radius: 26px; padding: clamp(26px, 4.5vw, 52px); display: grid; grid-template-columns: 1.1fr 1fr; gap: 30px clamp(28px, 5vw, 64px); align-items: center; }
+.contact h3 { font-size: clamp(1.5rem, 3.2vw, 2rem); margin-bottom: 8px; }
+.contact-lead { color: var(--muted); margin: 0 0 26px; max-width: 46ch; }
+.contact-list { display: grid; gap: 14px; }
+.contact-list li { display: flex; align-items: center; gap: 14px; }
+.contact-list .ic-wrap { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; flex: none; color: var(--cyan); background: rgba(34,211,238,.09); border: 1px solid rgba(34,211,238,.3); }
+.contact-list small { display: block; color: var(--muted); font-size: .8rem; line-height: 1.2; }
+.contact-list a, .contact-list b { color: #fff; font-weight: 500; text-decoration: none; word-break: break-word; }
+.contact-list a:hover { color: var(--cyan); }
+.contact-actions { display: grid; gap: 14px; justify-items: stretch; }
+.contact-actions .btn { width: 100%; }
+
+.footer { padding: 44px 0 40px; margin-top: 40px; border-top: 1px solid var(--line-soft); color: var(--muted); font-size: .9rem; }
+.footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; }
+.footer a { color: var(--sky); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+.footer-gh { display: inline-flex; align-items: center; gap: 6px; vertical-align: middle; }
+.footer-gh .ic { width: 1.05em; height: 1.05em; }
+.project-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px; margin-top: 34px; padding-top: 24px; border-top: 1px solid var(--line-soft); }
+.project-cta p { margin: 0; color: var(--muted); }
 
 /* ---------- Lightbox ---------- */
-
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(11, 37, 69, 0.92);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  z-index: 200;
+dialog.lightbox {
+  width: 100vw; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: var(--text);
 }
-
-.lightbox[hidden] { display: none; }
-
-.lightbox img {
-  max-width: 100%;
-  max-height: 90vh;
-  border-radius: var(--radius-sm);
+dialog.lightbox[open] { display: flex; align-items: center; justify-content: center; animation: lbIn .25s ease both; }
+dialog.lightbox::backdrop { background: rgba(2, 6, 18, .9); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+@keyframes lbIn { from { opacity: 0; } to { opacity: 1; } }
+.lb-inner { position: relative; width: min(1180px, 94vw); display: grid; gap: 14px; justify-items: center; }
+.lb-stage { position: relative; width: 100%; display: grid; place-items: center; min-height: 40vh; }
+.lb-stage img { max-width: 100%; max-height: 78dvh; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 50px rgba(34,211,238,.15); background: #fff; }
+.lb-ph { padding: 60px 40px; border-radius: 14px; border: 1px dashed var(--line); color: var(--muted); text-align: center; }
+.lb-cap { margin: 0; text-align: center; color: var(--muted); }
+.lb-cap strong { color: #fff; font-family: var(--display); font-weight: 600; margin-right: 10px; }
+.lb-btn {
+  position: absolute; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; cursor: pointer;
+  border: 1px solid var(--line); background: rgba(8, 20, 46, .85); color: #fff;
+  transition: border-color .2s ease, background .2s ease;
 }
+.lb-btn:hover { border-color: var(--cyan); background: rgba(34,211,238,.18); }
+.lb-close { top: -6px; right: -6px; z-index: 3; }
+.lb-prev  { left: 8px;  top: 50%; transform: translateY(-50%); z-index: 2; }
+.lb-next  { right: 8px; top: 50%; transform: translateY(-50%); z-index: 2; }
 
-.lightbox-close {
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  background: transparent;
-  border: none;
-  color: var(--white);
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1040px) {
+  .hamburger { display: inline-flex; }
+  #portfolio-bar .nav {
+    position: absolute; top: calc(100% + 8px); left: 24px; right: 24px; z-index: 5;
+    display: none; flex-direction: column; align-items: stretch; gap: 4px; padding: 12px; border-radius: 22px;
+    background: rgba(7, 16, 38, .98); border: 1px solid var(--line);
+    box-shadow: 0 20px 50px rgba(2,8,28,.6);
+  }
+  #portfolio-bar.nav-open .nav { display: flex; }
+  #portfolio-bar .nav-link { padding: 12px 16px; border-radius: 12px; }
+  #portfolio-bar .nav .btn { margin: 6px 0 0; }
 }
-
-/* ---------- Scroll reveal ---------- */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ---------- Responsive ---------- */
 
 @media (max-width: 900px) {
-  .about-grid { grid-template-columns: 1fr; }
-  .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .project-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .project-details { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; }
-  .contact-grid { grid-template-columns: 1fr; }
-  .experience-list { grid-template-columns: 1fr; }
+  .about-grid, .contact { grid-template-columns: 1fr; }
+  .skill-row { grid-template-columns: 1fr; padding: 22px 0; }
+  .gallery { grid-template-columns: 1fr; max-width: 560px; }
+  .capabilities { grid-template-columns: 1fr; }
+  .cap, .cap + .cap { padding: 20px 0 4px; border-left: 0; }
+  .cap + .cap { border-top: 1px solid var(--line-soft); }
+  .strengths { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 680px) {
-  .main-nav {
-    position: fixed;
-    top: 65px;
-    left: 0;
-    right: 0;
-    background: var(--white);
-    border-bottom: 1px solid var(--grey-line);
-    flex-direction: column;
-    padding: 12px 24px 20px;
-    gap: 4px;
-    transform: translateY(-12px);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.18s ease, transform 0.18s ease;
-  }
-
-  .main-nav.open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .nav-link {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--grey-line);
-  }
-
-  .hamburger { display: flex; }
-
-  .header-actions .btn-small { display: none; }
-
-  .skills-grid { grid-template-columns: 1fr; }
-  .project-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .project-details { grid-template-columns: 1fr; }
-  .gallery { grid-template-columns: 1fr; }
-  .hero-stats { grid-template-columns: 1fr; }
-  .hero-actions .btn { width: 100%; }
-  .experience-top { flex-direction: column; }
+@media (max-width: 720px) {
+  .container { padding: 0 16px; }
+  .section { padding-top: 60px; }
+  #portfolio-bar .nav { left: 16px; right: 16px; }
+  .skills-panel { padding: 2px 20px; }
+  .workflow { flex-direction: column; align-items: stretch; gap: 16px; }
+  .workflow li { text-align: center; }
+  .workflow li + li { margin-left: 0; }
+  .workflow li + li::before { content: "↓"; left: 50%; top: -14px; transform: translate(-50%, -50%); }
+  .stat-bar { grid-template-columns: 1fr; }
+  .stat-bar div + div { border-left: 0; border-top: 1px solid var(--line-soft); }
+  .timeline { padding-left: 26px; }
+  .exp::before { left: -25px; }
+  .timeline::before { left: 2px; }
+  .strengths { grid-template-columns: 1fr; }
+  .lb-prev { left: 2px; } .lb-next { right: 2px; }
+  .lb-btn { width: 40px; height: 40px; }
 }
 
-
-
-/* Welcome / splash screen */
-.welcome-screen{
-  position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center;
-  overflow:hidden; background:#07111f; color:#fff; transition:opacity .8s ease, visibility .8s ease;
+/* home top bar: keep 4 links on one row on phones */
+@media (max-width: 560px) {
+  .home-bar .brand-name { display: none; }
+  .home-bar .nav-link { padding: 8px 10px; font-size: .86rem; }
+  .home-bar .gh-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .home-bar .nav-github .ic { width: 1.25em; height: 1.25em; }
+  .home-bar .topbar-inner { padding-left: 10px; }
+  .hero-actions .btn { flex: 1 1 100%; }
+  .tools { gap: 8px; }
+  .tools li { padding: 5px 13px; border-radius: 999px; font-size: .88rem; color: var(--text); background: rgba(56,189,248,.08); border: 1px solid rgba(94,190,240,.28); }
+  .tools li + li::before { content: none; }
+  .welcome { letter-spacing: .2em; }
+  .role { letter-spacing: .26em; }
 }
-.welcome-screen.is-hidden{opacity:0; visibility:hidden; pointer-events:none;}
-.welcome-grid{position:absolute; inset:0; opacity:.22; background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px); background-size:55px 55px; mask-image:linear-gradient(to bottom,transparent,black 20%,black 80%,transparent);}
-.welcome-screen:before,.welcome-screen:after{content:"";position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;}
-.welcome-screen:before{width:360px;height:360px;background:#2563eb;top:-120px;right:-80px;}
-.welcome-screen:after{width:320px;height:320px;background:#7c3aed;bottom:-120px;left:-80px;}
-.welcome-content{position:relative;text-align:center;max-width:900px;padding:40px 24px;animation:welcomeIn 1s ease both;}
-.welcome-kicker{font-size:.82rem;letter-spacing:.28em;font-weight:700;opacity:.75;margin:0 0 22px;}
-.welcome-content h1{font-size:clamp(3.4rem,9vw,8rem);line-height:.9;letter-spacing:-.055em;margin:0;font-weight:900;}
-.welcome-content h1 span{display:block;background:linear-gradient(90deg,#fff,#9cc4ff,#d8c2ff);-webkit-background-clip:text;background-clip:text;color:transparent;}
-.welcome-name{font-size:1.05rem;letter-spacing:.32em;font-weight:700;margin:28px 0 12px;}
-.welcome-subtitle{font-size:clamp(1.05rem,2.4vw,1.5rem);margin:0;opacity:.8;}
-.welcome-line{width:90px;height:2px;margin:26px auto;background:rgba(255,255,255,.65);}
-.welcome-tools{font-size:.76rem;letter-spacing:.12em;opacity:.65;margin:0 0 34px;}
-.enter-portfolio{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;padding:15px 24px;border-radius:999px;font-weight:800;letter-spacing:.08em;cursor:pointer;backdrop-filter:blur(12px);transition:transform .25s ease,background .25s ease,border-color .25s ease;}
-.enter-portfolio span{display:inline-block;margin-left:10px;transition:transform .25s ease;}
-.enter-portfolio:hover{transform:translateY(-3px);background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.7);}
-.enter-portfolio:hover span{transform:translateX(5px);}
-.scroll-hint{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;opacity:.4;margin:16px 0 0;}
-@keyframes welcomeIn{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:none}}
-body.welcome-active{overflow:hidden;}
-@media(max-width:600px){.welcome-name{letter-spacing:.2em}.welcome-tools{line-height:1.8}.enter-portfolio{padding:13px 19px;font-size:.78rem}}
+
+@media (max-width: 360px) {
+  .home-bar .brand { display: none; }
+}
+
+@media (max-width: 400px) {
+  .home-bar .nav-link { padding: 8px 7px; font-size: .82rem; }
+  .home-bar .nav { gap: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
 </style>
 </head>
 <body>
 
-  <!-- WELCOME SCREEN -->
-  <section class="welcome-screen" id="welcome-screen" aria-label="Welcome to my portfolio">
-    <div class="welcome-grid"></div>
-    <div class="welcome-content">
-      <p class="welcome-kicker">WELCOME TO MY PORTFOLIO</p>
-      <h1>DATA <span>ANALYST</span></h1>
-      <p class="welcome-name">J SAI GAJENDRA</p>
-      <p class="welcome-subtitle">Turning Data into Insights &amp; Decisions</p>
-      <div class="welcome-line"></div>
-      <p class="welcome-tools">POWER BI &nbsp;•&nbsp; DAX &nbsp;•&nbsp; EXCEL &nbsp;•&nbsp; DATA ANALYSIS</p>
-      <button class="enter-portfolio" id="enter-portfolio">EXPLORE MY PORTFOLIO <span>→</span></button>
-      <p class="scroll-hint">Click to enter</p>
-    </div>
-  </section>
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+</svg>
 
+<a class="skip-link" href="#main-content">Skip to content</a>
 
-<a class="skip-link" href="#main">Skip to content</a>
-
-<header class="site-header" id="site-header">
-  <div class="header-inner">
-    <a href="#home" class="brand">J. Sai Gajendra</a>
-
-    <nav class="main-nav" id="main-nav">
-      <a href="#home" class="nav-link">Home</a>
-      <a href="#about" class="nav-link">About</a>
-      <a href="#skills" class="nav-link">Skills</a>
-      <a href="#projects" class="nav-link">Projects</a>
-      <a href="#experience" class="nav-link">Experience</a>
-      <a href="#education" class="nav-link">Education</a>
-      <a href="#contact" class="nav-link">Contact</a>
-    </nav>
-
-    <div class="header-actions">
-      <a href="J_Sai_Gajendra_Data_Analyst_Resume.pdf" target="_blank" rel="noopener" class="btn btn-outline btn-small">View Resume ↗</a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</header>
-
-<main id="main">
-
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-grid" aria-hidden="true"></div>
-    <div class="hero-inner">
-      <p class="eyebrow">HELLO, I'M SAI GAJENDRA</p>
-      <h1 class="hero-name">DATA ANALYST</h1>
-      <p class="hero-headline">Turning Data into Insights &amp; Decisions</p>
-      <p class="hero-desc">Power BI &middot; DAX &middot; Excel &middot; SQL &middot; Data Visualization</p>
-
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">View My Projects</a>
-        <a href="J_Sai_Gajendra_Data_Analyst_Resume.pdf" target="_blank" rel="noopener" class="btn btn-outline">View Resume ↗</a>
-      </div>
-
-      <dl class="hero-stats">
-        <div class="hero-stat">
-          <dt>Experience</dt>
-          <dd>2.5+ Years</dd>
-        </div>
-        <div class="hero-stat">
-          <dt>Records analyzed</dt>
-          <dd>4,500+</dd>
-        </div>
-        <div class="hero-stat">
-          <dt>Core tools</dt>
-          <dd>Power BI &amp; DAX</dd>
-        </div>
-        <div class="hero-stat">
-          <dt>Focus areas</dt>
-          <dd>MIS &amp; Sales Analytics</dd>
-        </div>
-      </dl>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="section" id="about">
-    <div class="section-inner about-grid">
-      <div class="section-head">
-        <h2>About Me</h2>
-      </div>
-      <div class="about-body">
-        <p>Sai works with business data to turn raw information into reports, dashboards and decisions leadership can act on. His day-to-day sits at the intersection of MIS reporting, sales performance analysis and lead management &mdash; tracking how prospects move through a pipeline, where revenue is coming from, and what the numbers say before someone has to ask.</p>
-        <p>He builds and maintains reporting using Power BI, DAX, Excel, SQL and Google Sheets, working directly with CRM data to keep lead, payment and revenue tracking accurate. That includes writing DAX measures for KPI dashboards, cleaning and modeling raw exports, and preparing the daily, weekly and monthly MIS reports that sales and management teams rely on.</p>
-        <p>Comfortable moving between spreadsheets and dashboards, he pays close attention to data accuracy &mdash; validating records, reconciling payment status, and flagging inconsistencies before they reach a report.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section class="section section-tinted" id="skills">
-    <div class="section-inner">
-      <div class="section-head">
-        <h2>Skills</h2>
-      </div>
-
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>Data Analytics</h3>
-          <ul class="tag-list">
-            <li>Data Analysis</li>
-            <li>Sales Analysis</li>
-            <li>Lead Analysis</li>
-            <li>Revenue Analysis</li>
-            <li>KPI Analysis</li>
-            <li>Conversion Rate Analysis</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h3>Business Intelligence</h3>
-          <ul class="tag-list">
-            <li>Power BI</li>
-            <li>DAX</li>
-            <li>Power BI Dashboards</li>
-            <li>Data Visualization</li>
-            <li>KPI Dashboards</li>
-            <li>Current vs Previous Month Analysis</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h3>Reporting</h3>
-          <ul class="tag-list">
-            <li>MIS Reporting</li>
-            <li>Daily Reports</li>
-            <li>Weekly Reports</li>
-            <li>Monthly Reports</li>
-            <li>Management Reporting</li>
-            <li>Sales Performance Reports</li>
-          </ul>
-        </div>
-
-        <div class="skill-card">
-          <h3>Tools</h3>
-          <ul class="tag-list">
-            <li>Microsoft Excel</li>
-            <li>Pivot Tables</li>
-            <li>VLOOKUP</li>
-            <li>Google Sheets</li>
-            <li>SQL &mdash; Basic</li>
-            <li>LeadSquared</li>
-            <li>CRM Systems</li>
-            <li>Microsoft Office</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURED PROJECT -->
-  <section class="section" id="projects">
-    <div class="section-inner">
-      <div class="section-head">
-        <h2>Featured Project</h2>
-      </div>
-
-      <div class="project-feature">
-        <h3 class="project-title">EdTech Lead, Revenue &amp; Payment Analytics Dashboard</h3>
-
-        <dl class="project-stats">
-          <div><dt>Records</dt><dd>4,500+</dd></div>
-          <div><dt>Dashboards</dt><dd>2</dd></div>
-          <div><dt>Users</dt><dd>7</dd></div>
-          <div><dt>Reporting cadence</dt><dd>Daily / Weekly / Monthly</dd></div>
-        </dl>
-
-        <p class="project-desc">A Power BI reporting system built around an EdTech business's lead, revenue and payment data. It brings together lead status, course and source information, sales-executive activity, payment status and revenue into a single set of dashboards, so daily, weekly and monthly sales performance can be reviewed without digging through raw exports.</p>
-
-        <div class="workflow" role="img" aria-label="Data workflow: Raw Data, then Data Cleaning, then Data Transformation, then Data Modeling, then DAX Measures, then Power BI Dashboard, then Business Insights">
-          <div class="workflow-step">Raw Data</div>
-          <div class="workflow-arrow">&darr;</div>
-          <div class="workflow-step">Data Cleaning</div>
-          <div class="workflow-arrow">&darr;</div>
-          <div class="workflow-step">Data Transformation</div>
-          <div class="workflow-arrow">&darr;</div>
-          <div class="workflow-step">Data Modeling</div>
-          <div class="workflow-arrow">&darr;</div>
-          <div class="workflow-step">DAX Measures</div>
-          <div class="workflow-arrow">&darr;</div>
-          <div class="workflow-step">Power BI Dashboard</div>
-          <div class="workflow-arrow">&darr;</div>
-          <div class="workflow-step workflow-step-final">Business Insights</div>
-        </div>
-
-        <ul class="concept-list">
-          <li>KPI cards</li>
-          <li>Date analysis</li>
-          <li>Filters</li>
-          <li>Slicers</li>
-          <li>Lead status</li>
-          <li>Payment status</li>
-          <li>Revenue</li>
-          <li>Conversion rate</li>
-          <li>Sales performance</li>
-          <li>Current vs previous month</li>
-          <li>Daily / weekly / monthly analysis</li>
-        </ul>
-      </div>
-
-      <!-- DASHBOARD GALLERY -->
-      <div class="gallery">
-        <div class="gallery-item">
-          <button class="gallery-trigger" data-full="assets/dashboard-1.png" aria-label="Open larger view of Lead &amp; Revenue Overview dashboard">
-            <img src="assets/dashboard-1.png" alt="Lead and Revenue Overview dashboard screenshot" loading="lazy"
-                 onerror="this.closest('.gallery-item').classList.add('img-missing')">
-            <span class="placeholder-fallback" aria-hidden="true">Dashboard preview coming soon</span>
-          </button>
-          <h4>Lead &amp; Revenue Overview</h4>
-          <p>KPI cards for total leads, revenue and conversion rate with month-over-month comparison.</p>
-        </div>
-
-        <div class="gallery-item">
-          <button class="gallery-trigger" data-full="assets/dashboard-2.png" aria-label="Open larger view of Payment &amp; Sales Performance dashboard">
-            <img src="assets/dashboard-2.png" alt="Payment and Sales Performance dashboard screenshot" loading="lazy"
-                 onerror="this.closest('.gallery-item').classList.add('img-missing')">
-            <span class="placeholder-fallback" aria-hidden="true">Dashboard preview coming soon</span>
-          </button>
-          <h4>Payment &amp; Sales Performance</h4>
-          <p>Tracks payment status, average ticket size and sales-executive performance by period.</p>
-        </div>
-
-        <div class="gallery-item">
-          <button class="gallery-trigger" data-full="assets/dashboard-3.png" aria-label="Open larger view of Lead Status &amp; Source Breakdown dashboard">
-            <img src="assets/dashboard-3.png" alt="Lead status and source breakdown dashboard screenshot" loading="lazy"
-                 onerror="this.closest('.gallery-item').classList.add('img-missing')">
-            <span class="placeholder-fallback" aria-hidden="true">Dashboard preview coming soon</span>
-          </button>
-          <h4>Lead Status &amp; Source Breakdown</h4>
-          <p>Slicers by lead stage, source/channel and CRE to filter daily, weekly and monthly views.</p>
-        </div>
-      </div>
-
-      <!-- PROJECT DETAILS -->
-      <div class="project-details">
-        <div class="detail-card">
-          <h4>Business Objective</h4>
-          <p>Give the sales and management team a single, reliable view of how leads convert into revenue &mdash; where leads come from, how they progress, and how payments are tracked against them &mdash; so performance can be reviewed without manual reconciliation.</p>
-        </div>
-
-        <div class="detail-card">
-          <h4>Data</h4>
-          <ul>
-            <li>4,500+ records</li>
-            <li>Lead information</li>
-            <li>Course information</li>
-            <li>Country / region</li>
-            <li>Source / channel</li>
-            <li>CRE / sales executive</li>
-            <li>Payment information</li>
-            <li>Revenue information</li>
-            <li>Dates</li>
-          </ul>
-        </div>
-
-        <div class="detail-card">
-          <h4>Analysis</h4>
-          <ul>
-            <li>Total Leads</li>
-            <li>Total Payments</li>
-            <li>Total Revenue</li>
-            <li>Conversion Rate</li>
-            <li>Pending Leads</li>
-            <li>Won / Lost Leads</li>
-            <li>Payment Status</li>
-            <li>Average Ticket Size</li>
-            <li>Sales Performance</li>
-          </ul>
-        </div>
-
-        <div class="detail-card">
-          <h4>Tools</h4>
-          <ul class="tools-inline">
-            <li>Power BI</li>
-            <li>DAX</li>
-            <li>Excel</li>
-            <li>Google Sheets</li>
-            <li>SQL</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section class="section section-tinted" id="experience">
-    <div class="section-inner">
-      <div class="section-head">
-        <h2>Experience</h2>
-      </div>
-
-      <div class="experience-card">
-        <div class="experience-top">
-          <div>
-            <h3>Data Research Analyst</h3>
-            <p class="experience-org">SimpliAxis Solutions Pvt. Ltd., Bengaluru</p>
-          </div>
-          <p class="experience-dates">1 Year 6 Months</p>
-        </div>
-        <ul class="experience-list">
-          <li>Prepared, organized, and maintained approximately 4,500+ customer enquiry and lead records using Google Sheets.</li>
-          <li>Performed data cleaning and validation to identify duplicate, missing, incorrect, incomplete, and improperly formatted records.</li>
-          <li>Prepared datasets and imported data from Google Sheets into Power BI for analysis and reporting.</li>
-          <li>Developed and maintained 2 Power BI dashboards with KPI cards, charts, graphs, tables, and interactive filters.</li>
-          <li>Created DAX measures for Total Leads, Total Revenue, and Total Payments.</li>
-          <li>Developed current-month vs previous-month comparisons for business performance analysis.</li>
-          <li>Analyzed lead, revenue, and payment data to identify trends, discrepancies, and performance changes.</li>
-          <li>Maintained source data and performed quality checks on datasets, calculations, dashboards, and reports.</li>
-          <li>Supported dashboard reporting for approximately 7 users/team members and helped reduce manual reporting effort.</li>
-        </ul>
-      </div>
-
-      <div class="experience-card">
-        <div class="experience-top">
-          <div>
-            <h3>BPO Associate</h3>
-            <p class="experience-org">Teleperformance</p>
-          </div>
-          <p class="experience-dates">11 Months</p>
-        </div>
-        <ul class="experience-list">
-          <li>Handled customer queries and provided accurate information and appropriate resolutions while maintaining service quality.</li>
-          <li>Maintained customer information in internal systems and followed standard operating procedures and quality guidelines.</li>
-          <li>Achieved assigned productivity and performance targets while developing communication, problem-solving, teamwork, and time-management skills.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section class="section" id="education">
-    <div class="section-inner">
-      <div class="section-head">
-        <h2>Education</h2>
-      </div>
-      <div class="education-card">
-        <h3>Bachelor of Computer Applications (BCA)</h3>
-        <p>Vijayam Degree College</p>
-        <p class="education-year">2023</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESUME CTA -->
-  <section class="section resume-cta">
-    <div class="section-inner resume-cta-inner">
-      <h2>Want to know more about my experience?</h2>
-      <p>Download my resume to explore my professional experience, technical skills and analytics projects.</p>
-      <a href="J_Sai_Gajendra_Data_Analyst_Resume.pdf" target="_blank" rel="noopener" class="btn btn-primary">Download Resume ↗</a>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section" id="contact">
-    <div class="section-inner">
-      <div class="section-head">
-        <h2>Contact</h2>
-      </div>
-
-      <div class="contact-grid">
-        <ul class="contact-list">
-          <li><span>Email</span><a href="mailto:jsai6305@gmail.com">jsai6305@gmail.com</a></li>
-          <li><span>Phone</span><a href="tel:6305201697">6305201697</a></li>
-          <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/jillela-sai-gajendra-83674b264/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-          <li><span>GitHub</span><a href="YOUR-GITHUB-LINK" target="_blank" rel="noopener">GitHub ↗</a></li>
-          <li><span>Location</span><span>Andhra Pradesh, India</span></li>
-        </ul>
-
-        <div class="contact-actions">
-          <a href="mailto:jsai6305@gmail.com" class="btn btn-primary">Email Me</a>
-          <a href="https://www.linkedin.com/in/jillela-sai-gajendra-83674b264/" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn ↗</a>
-          <a href="YOUR-GITHUB-LINK" target="_blank" rel="noopener" class="btn btn-outline">GitHub ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="section-inner footer-inner">
-    <p>&copy; <span id="year"></span> J. Sai Gajendra. Built with HTML, CSS &amp; JavaScript.</p>
-  </div>
-</footer>
-
-<button id="back-to-top" class="back-to-top" aria-label="Back to top">&uarr;</button>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Dashboard preview" hidden>
-  <button class="lightbox-close" id="lightbox-close" aria-label="Close preview">&times;</button>
-  <img src="" alt="" id="lightbox-img">
+<div class="bg" aria-hidden="true">
+  <div class="bg-grid"></div>
+  <div class="bg-dots"></div>
+  <div class="bg-ruler-y"></div>
+  <div class="bg-ruler-x"></div>
 </div>
 
-<script>
-// ==========================================================================
-// J. Sai Gajendra — Data Analyst Portfolio
-// Mobile nav, smooth scroll, active-section highlight, scroll reveal,
-// dashboard lightbox, back-to-top.
-// ==========================================================================
+<!-- ======================================================================
+     PAGE 1 — HOME / WELCOME
+     ====================================================================== -->
+<div class="page" id="home">
+  <header class="topbar home-bar">
+    <div class="container">
+      <div class="topbar-inner glass">
+        <a class="brand" href="#home" aria-label="J. Sai Gajendra — Home">
+          <span class="brand-mark">JS</span><span class="brand-name">J. Sai Gajendra</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a class="nav-link is-active" href="#home" aria-current="page">Home</a>
+          <a class="nav-link" href="#portfolio">Portfolio</a>
+          <a class="nav-link" href="J_Sai_Gajendra_Resume.pdf" download="J_Sai_Gajendra_Resume.pdf">Resume</a>
+          <a class="nav-link" href="#contact">Contact</a>
+          <a class="nav-link nav-github" href="https://github.com/sai2002001" target="_blank" rel="noopener noreferrer"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg><span class="gh-text">GitHub</span></a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Footer year
-  const yearEl = document.getElementById('year');
+  <main class="home-main" id="main-content">
+    <div class="container">
+      <section class="hero-panel glass" aria-labelledby="hero-name">
+        <p class="welcome" style="--i:0">Welcome to my portfolio</p>
+        <p class="hello" style="--i:1">Hello, I'm</p>
+        <h1 class="name" id="hero-name" data-focus tabindex="-1" style="--i:2">J. Sai Gajendra</h1>
+        <p class="role" style="--i:3">DATA ANALYST</p>
+        <p class="tagline" style="--i:4">Turning Data into Insights &amp; Decisions</p>
+        <ul class="tools" style="--i:5" aria-label="Core skills">
+          <li>Power BI</li><li>DAX</li><li>Excel</li><li>SQL</li><li>Data Analysis</li>
+        </ul>
+
+        <div class="hero-meta" style="--i:6">
+          <div class="meta-item">
+            <svg class="ic" aria-hidden="true"><use href="#i-briefcase"/></svg>
+            <div><strong>2.5+ Years</strong><span>Experience</span></div>
+          </div>
+          <div class="meta-item">
+            <svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>
+            <div><strong>Andhra Pradesh, India</strong><span>Location</span></div>
+          </div>
+        </div>
+
+        <div class="hero-actions" style="--i:7">
+          <a class="btn btn-primary" href="#portfolio">Explore My Portfolio <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-ghost" href="J_Sai_Gajendra_Resume.pdf" download="J_Sai_Gajendra_Resume.pdf"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg> Download Resume</a>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- ======================================================================
+     PAGE 2 — FULL PORTFOLIO
+     ====================================================================== -->
+<div class="page" id="portfolio" hidden>
+  <header class="topbar" id="portfolio-bar">
+    <div class="container">
+      <div class="topbar-inner glass">
+        <a class="brand" href="#home" aria-label="J. Sai Gajendra — back to home page">
+          <span class="brand-mark">JS</span><span class="brand-name">J. Sai Gajendra</span>
+        </a>
+        <button class="hamburger" id="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="portfolio-nav">
+          <svg class="ic ic-open" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg class="ic ic-close" aria-hidden="true"><use href="#i-x"/></svg>
+        </button>
+        <nav class="nav" id="portfolio-nav" aria-label="Portfolio sections">
+          <a class="nav-link" data-section="about" href="#about">About</a>
+          <a class="nav-link" data-section="skills" href="#skills">Skills</a>
+          <a class="nav-link" data-section="projects" href="#projects">Projects</a>
+          <a class="nav-link" data-section="experience" href="#experience">Experience</a>
+          <a class="nav-link" data-section="education" href="#education">Education</a>
+          <a class="nav-link" data-section="contact" href="#contact">Contact</a>
+          <a class="btn btn-primary btn-sm" href="J_Sai_Gajendra_Resume.pdf" download="J_Sai_Gajendra_Resume.pdf"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg> Download Resume</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="portfolio-main">
+    <!-- ABOUT -->
+    <section class="section" id="about" aria-labelledby="about-h">
+      <div class="container">
+        <div class="section-head"><h2 id="about-h" data-focus tabindex="-1">About Me</h2></div>
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>I'm a Data Analyst with 2.5 years of total experience: 1 year 6 months as a Data Research Analyst and 11 months in a BPO role. My work centres on preparing, cleaning and validating data, then turning it into analysis, visualizations and reports that people can act on.</p>
+            <p>I build Power BI dashboards backed by DAX measures, working from Excel and Google Sheets data and basic SQL. I pay close attention to accuracy: checking records, catching inconsistencies and confirming figures before they reach a report.</p>
+            <ul class="chips" aria-label="Focus areas">
+              <li class="chip">Data preparation</li>
+              <li class="chip">Data cleaning</li>
+              <li class="chip">Data validation</li>
+              <li class="chip">Data analysis</li>
+              <li class="chip">Data visualization</li>
+              <li class="chip">Reporting</li>
+              <li class="chip">Power BI dashboard development</li>
+            </ul>
+            <a class="btn btn-ghost" href="J_Sai_Gajendra_Resume.pdf" download="J_Sai_Gajendra_Resume.pdf"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg> Download Resume</a>
+          </div>
+          <ul class="exp-summary glass" aria-label="Experience summary">
+            <li><strong>2.5 years</strong><span>Total experience</span></li>
+            <li><strong>1 yr 6 mo</strong><span>Data Research Analyst</span></li>
+            <li><strong>11 months</strong><span>BPO Associate</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills" aria-labelledby="skills-h">
+      <div class="container">
+        <div class="section-head"><h2 id="skills-h">Skills</h2></div>
+        <div class="skills-panel glass">
+          <div class="skill-row">
+            <h3>Data Analytics &amp; BI</h3>
+            <ul class="chips"><li class="chip">Power BI</li><li class="chip">DAX</li><li class="chip">Data Analysis</li><li class="chip">Data Visualization</li><li class="chip">Reporting</li></ul>
+          </div>
+          <div class="skill-row">
+            <h3>Data Preparation</h3>
+            <ul class="chips"><li class="chip">Microsoft Excel</li><li class="chip">Google Sheets</li><li class="chip">Data Cleaning</li><li class="chip">Data Validation</li><li class="chip">Data Quality</li></ul>
+          </div>
+          <div class="skill-row">
+            <h3>SQL</h3>
+            <ul class="chips"><li class="chip">SELECT</li><li class="chip">WHERE</li><li class="chip">Basic SQL Operations</li></ul>
+          </div>
+          <div class="skill-row">
+            <h3>Dashboard Development</h3>
+            <ul class="chips"><li class="chip">KPI Development</li><li class="chip">Interactive Dashboards</li><li class="chip">Charts</li><li class="chip">Graphs</li><li class="chip">Tables</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECT -->
+    <section class="section" id="projects" aria-labelledby="projects-h">
+      <div class="container">
+        <div class="section-head"><h2 id="projects-h">Featured Project</h2></div>
+
+        <article class="project glass">
+          <div class="project-top">
+            <h3 class="project-title">EdTech Lead, Revenue &amp; Payment Analytics Dashboard</h3>
+            <dl class="project-facts" style="margin:0">
+              <div class="fact"><dt>Domain</dt><dd>EdTech / Professional Certification</dd></div>
+              <div class="fact"><dt>Tools</dt><dd><ul class="chips"><li class="chip">Power BI</li><li class="chip">DAX</li><li class="chip">Google Sheets</li><li class="chip">Excel</li></ul></dd></div>
+            </dl>
+          </div>
+
+          <p class="project-desc">A Power BI reporting system built around an EdTech business's customer enquiry and lead data. Two dashboards bring lead activity, revenue and payments together, so the team can review daily, weekly and monthly performance, and compare the current month with the previous one, without working through raw exports.</p>
+
+          <dl class="stat-bar" style="margin:0">
+            <div><dt>Customer enquiry and lead records (approx.)</dt><dd>4,500+</dd></div>
+            <div><dt>Power BI dashboards</dt><dd>2</dd></div>
+            <div><dt>Users / team members (approx.)</dt><dd>~7</dd></div>
+          </dl>
+
+          <ol class="workflow" aria-label="Project workflow">
+            <li>Raw data</li><li>Cleaning &amp; validation</li><li>Data modeling</li><li>DAX measures</li><li>Power BI dashboards</li><li>Business insights</li>
+          </ol>
+
+          <h4 class="sub-h">What the dashboards cover</h4>
+          <div class="capabilities">
+            <div class="cap">
+              <h4>Analysis</h4>
+              <ul><li>Lead analysis</li><li>Revenue analysis</li><li>Payment analysis</li></ul>
+            </div>
+            <div class="cap">
+              <h4>Dashboard features</h4>
+              <ul><li>KPI cards</li><li>Charts and graphs</li><li>Tables</li><li>Interactive filters</li></ul>
+            </div>
+            <div class="cap">
+              <h4>Reporting</h4>
+              <ul><li>Daily reporting</li><li>Weekly reporting</li><li>Monthly reporting</li><li>Current-month vs previous-month comparison</li></ul>
+            </div>
+          </div>
+
+          <h4 class="sub-h">DAX measures</h4>
+          <ul class="dax" aria-label="DAX measures">
+            <li>[Total Leads]</li><li>[Total Revenue]</li><li>[Total Payments]</li>
+          </ul>
+
+          <h4 class="sub-h">Dashboard gallery</h4>
+          <div class="gallery">
+            <figure class="shot">
+              <button class="shot-btn" type="button" data-index="0" aria-label="View the Sales Overview screenshot larger">
+                <span class="shot-frame">
+                  <span class="shot-ph" aria-hidden="true"><svg class="ic"><use href="#i-image"/></svg>Sales Overview</span>
+                  <img src="assets/dashboard-1.png" alt="Power BI Sales Overview dashboard" loading="lazy" onerror="this.parentNode.classList.add('is-missing')">
+                </span>
+                <span class="shot-zoom" aria-hidden="true"><svg class="ic"><use href="#i-expand"/></svg>Enlarge</span>
+              </button>
+              <figcaption><h4>Sales Overview</h4><p>Headline KPIs for leads, revenue and payments.</p></figcaption>
+            </figure>
+            <figure class="shot">
+              <button class="shot-btn" type="button" data-index="1" aria-label="View the Data Table screenshot larger">
+                <span class="shot-frame">
+                  <span class="shot-ph" aria-hidden="true"><svg class="ic"><use href="#i-image"/></svg>Data Table</span>
+                  <img src="assets/dashboard-2.png" alt="Power BI Data Table dashboard" loading="lazy" onerror="this.parentNode.classList.add('is-missing')">
+                </span>
+                <span class="shot-zoom" aria-hidden="true"><svg class="ic"><use href="#i-expand"/></svg>Enlarge</span>
+              </button>
+              <figcaption><h4>Data Table</h4><p>Detailed record-level view of the underlying data.</p></figcaption>
+            </figure>
+            <figure class="shot">
+              <button class="shot-btn" type="button" data-index="2" aria-label="View the Advanced Analytics screenshot larger">
+                <span class="shot-frame">
+                  <span class="shot-ph" aria-hidden="true"><svg class="ic"><use href="#i-image"/></svg>Advanced Analytics</span>
+                  <img src="assets/dashboard-3.png" alt="Power BI Advanced Analytics dashboard" loading="lazy" onerror="this.parentNode.classList.add('is-missing')">
+                </span>
+                <span class="shot-zoom" aria-hidden="true"><svg class="ic"><use href="#i-expand"/></svg>Enlarge</span>
+              </button>
+              <figcaption><h4>Advanced Analytics</h4><p>Deeper trend and period-comparison analysis.</p></figcaption>
+            </figure>
+          </div>
+
+          <div class="project-cta">
+            <p>See my repositories and project code on GitHub.</p>
+            <a class="btn btn-ghost" href="https://github.com/sai2002001" target="_blank" rel="noopener noreferrer"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg> View GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience" aria-labelledby="experience-h">
+      <div class="container">
+        <div class="section-head"><h2 id="experience-h">Experience</h2></div>
+        <div class="timeline">
+          <article class="exp glass">
+            <div class="exp-head">
+              <div>
+                <h3>Data Research Analyst</h3>
+                <p class="exp-org">SimpliAxis Solution <span>· Bangalore, Karnataka</span></p>
+              </div>
+              <span class="exp-dur">1 Year 6 Months</span>
+            </div>
+            <ul class="exp-list">
+              <li>Prepared, organized and maintained approximately 4,500+ customer enquiry and lead records in Google Sheets.</li>
+              <li>Cleaned and validated data, identifying duplicate, missing, incorrect, incomplete and improperly formatted records.</li>
+              <li>Prepared datasets and imported data from Google Sheets into Power BI for analysis and reporting.</li>
+              <li>Developed and maintained 2 Power BI dashboards with KPI cards, charts, graphs, tables and interactive filters.</li>
+              <li>Created DAX measures for Total Leads, Total Revenue and Total Payments.</li>
+              <li>Built current-month vs previous-month comparisons to support business performance analysis.</li>
+              <li>Analyzed lead, revenue and payment data to identify trends, discrepancies and performance changes.</li>
+              <li>Ran data quality checks on source data, calculations, dashboards and reports.</li>
+              <li>Supported dashboard reporting for approximately 7 users/team members and helped reduce manual reporting effort.</li>
+            </ul>
+          </article>
+
+          <article class="exp glass">
+            <div class="exp-head">
+              <div>
+                <h3>BPO Associate</h3>
+                <p class="exp-org">Teleperformance</p>
+              </div>
+              <span class="exp-dur">11 Months</span>
+            </div>
+            <ul class="exp-list">
+              <li>Handled customer queries, giving accurate information and appropriate resolutions while maintaining service quality.</li>
+              <li>Maintained customer information in internal systems, following standard operating procedures (SOPs) and quality guidelines.</li>
+              <li>Met assigned productivity and performance targets.</li>
+              <li>Developed communication, problem-solving, teamwork and time-management skills.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION + STRENGTHS -->
+    <section class="section" id="education" aria-labelledby="education-h">
+      <div class="container">
+        <div class="section-head"><h2 id="education-h">Education</h2></div>
+        <div class="edu glass">
+          <div>
+            <h3>Bachelor of Computer Applications (BCA)</h3>
+            <p>Vijayam Degree College</p>
+          </div>
+          <span class="edu-year">2023</span>
+        </div>
+
+        <div class="section-head" style="margin-top:64px"><h2 id="strengths-h">Professional Strengths</h2></div>
+        <ul class="strengths" aria-labelledby="strengths-h">
+          <li class="strength"><span class="ic-wrap"><svg class="ic" aria-hidden="true"><use href="#i-zap"/></svg></span><span>Problem Solving</span></li>
+          <li class="strength"><span class="ic-wrap"><svg class="ic" aria-hidden="true"><use href="#i-activity"/></svg></span><span>Analytical Thinking</span></li>
+          <li class="strength"><span class="ic-wrap"><svg class="ic" aria-hidden="true"><use href="#i-eye"/></svg></span><span>Attention to Detail</span></li>
+          <li class="strength"><span class="ic-wrap"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></span><span>Team Collaboration</span></li>
+          <li class="strength"><span class="ic-wrap"><svg class="ic" aria-hidden="true"><use href="#i-message"/></svg></span><span>Communication</span></li>
+          <li class="strength"><span class="ic-wrap"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></span><span>Time Management</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact" aria-labelledby="contact-h">
+      <div class="container">
+        <div class="section-head"><h2 id="contact-h">Contact</h2></div>
+        <div class="contact glass">
+          <div>
+            <h3>J. Sai Gajendra</h3>
+            <p class="contact-lead">For Data Analyst opportunities, reach me by email or LinkedIn, or download my resume.</p>
+            <ul class="contact-list">
+              <li><span class="ic-wrap"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg></span><div><small>Email</small><a href="mailto:jsai6305@gmail.com">jsai6305@gmail.com</a></div></li>
+              <li><span class="ic-wrap"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></span><div><small>Phone</small><a href="tel:+916305201697">6305201697</a></div></li>
+              <li><span class="ic-wrap"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg></span><div><small>GitHub</small><a href="https://github.com/sai2002001" target="_blank" rel="noopener noreferrer">github.com/sai2002001</a></div></li>
+              <li><span class="ic-wrap"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span><div><small>Location</small><b>Andhra Pradesh, India</b></div></li>
+            </ul>
+          </div>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="mailto:jsai6305@gmail.com"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg> Email Me</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/jillela-sai-gajendra-83674b264/" target="_blank" rel="noopener noreferrer"><svg class="ic" aria-hidden="true"><use href="#i-linkedin"/></svg> LinkedIn</a>
+            <a class="btn btn-ghost" href="https://github.com/sai2002001" target="_blank" rel="noopener noreferrer"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg> GitHub</a>
+            <a class="btn btn-ghost" href="J_Sai_Gajendra_Resume.pdf" download="J_Sai_Gajendra_Resume.pdf"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg> Download Resume</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>&copy; <span id="year">2026</span> J. Sai Gajendra · Data Analyst</span>
+      <span class="footer-links"><a class="footer-gh" href="https://github.com/sai2002001" target="_blank" rel="noopener noreferrer"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a> · <a href="#home">Back to home</a> · <a href="#portfolio">Back to top</a></span>
+    </div>
+  </footer>
+</div>
+
+<!-- Screenshot viewer -->
+<dialog class="lightbox" id="lightbox" aria-label="Dashboard screenshot viewer">
+  <div class="lb-inner">
+    <button class="lb-btn lb-close" id="lb-close" type="button" aria-label="Close screenshot viewer"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
+    <div class="lb-stage">
+      <button class="lb-btn lb-prev" id="lb-prev" type="button" aria-label="Previous screenshot"><svg class="ic" aria-hidden="true"><use href="#i-left"/></svg></button>
+      <img id="lb-img" alt="">
+      <div class="lb-ph" id="lb-ph" hidden>This screenshot hasn't been added yet.</div>
+      <button class="lb-btn lb-next" id="lb-next" type="button" aria-label="Next screenshot"><svg class="ic" aria-hidden="true"><use href="#i-right"/></svg></button>
+    </div>
+    <p class="lb-cap"><strong id="lb-title"></strong><span id="lb-count"></span></p>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  'use strict';
+
+  var SECTIONS = ['about', 'skills', 'projects', 'experience', 'education', 'contact'];
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pages = { home: document.getElementById('home'), portfolio: document.getElementById('portfolio') };
+  var current = null;
+  var skip = document.querySelector('.skip-link');
+  var switching = false;
+
+  var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // ---------- Mobile hamburger menu ----------
-  const hamburger = document.getElementById('hamburger');
-  const mainNav = document.getElementById('main-nav');
+  /* ---------- Routing: two pages on one URL, driven by the hash ---------- */
 
+  function parseHash() {
+    var h = '';
+    try { h = decodeURIComponent(location.hash.replace(/^#\/?/, '')).toLowerCase(); } catch (e) {}
+    if (h === 'portfolio') return { page: 'portfolio', section: null };
+    if (SECTIONS.indexOf(h) > -1) return { page: 'portfolio', section: h };
+    return { page: 'home', section: null };
+  }
+
+  function jumpTop() { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }
+
+  function scrollToSection(section, instant) {
+    var behavior = (instant || reduce) ? 'instant' : 'smooth';
+    var el = section ? document.getElementById(section) : null;
+    if (el) el.scrollIntoView({ behavior: behavior, block: 'start' });
+    else window.scrollTo({ top: 0, left: 0, behavior: behavior });
+  }
+
+  function switchTo(route, initial) {
+    var next = pages[route.page];
+    var prev = current ? pages[current] : null;
+    closeMenu();
+
+    function reveal() {
+      Object.keys(pages).forEach(function (k) {
+        if (pages[k] !== next) { pages[k].hidden = true; pages[k].classList.remove('is-leaving'); }
+      });
+      next.hidden = false;
+      current = route.page;
+      document.title = route.page === 'home'
+        ? 'J. Sai Gajendra | Data Analyst Portfolio'
+        : 'Portfolio | J. Sai Gajendra, Data Analyst';
+      jumpTop();
+      if (!initial) next.classList.add('is-entering');
+      // let the browser lay the page out before scrolling to a section
+      requestAnimationFrame(function () {
+        if (route.section) scrollToSection(route.section, true);
+        if (!initial && !route.section) {
+          var focusEl = next.querySelector('[data-focus]');
+          if (focusEl) focusEl.focus({ preventScroll: true });
+        }
+      });
+      setTimeout(function () { next.classList.remove('is-entering'); }, 500);
+      switching = false;
+      if (skip) skip.setAttribute('href', route.page === 'home' ? '#main-content' : '#about');
+      // the hash may have changed while we were transitioning
+      if (parseHash().page !== current) syncRoute(false);
+    }
+
+    switching = true;
+    if (prev && !reduce) {
+      prev.classList.add('is-leaving');
+      setTimeout(reveal, 260);
+    } else {
+      reveal();
+    }
+  }
+
+  function syncRoute(initial) {
+    if (switching) return;
+    var r = parseHash();
+    if (r.page !== current) {
+      switchTo(r, initial);
+    } else if (r.page === 'portfolio') {
+      scrollToSection(r.section, false);
+    } else {
+      jumpTop();
+    }
+  }
+
+  window.addEventListener('hashchange', function () { syncRoute(false); });
+
+  /* ---------- Portfolio menu (mobile) ---------- */
+
+  var bar = document.getElementById('portfolio-bar');
+  var burger = document.getElementById('hamburger');
   function closeMenu() {
-    mainNav.classList.remove('open');
-    hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
+    if (!bar) return;
+    bar.classList.remove('nav-open');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Open navigation menu');
   }
-
-  if (hamburger && mainNav) {
-    hamburger.addEventListener('click', () => {
-      const isOpen = mainNav.classList.toggle('open');
-      hamburger.classList.toggle('open', isOpen);
-      hamburger.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    mainNav.querySelectorAll('.nav-link').forEach((link) => {
-      link.addEventListener('click', closeMenu);
-    });
-  }
-
-  // ---------- Smooth scroll for in-page links ----------
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener('click', (e) => {
-      const targetId = link.getAttribute('href');
-      if (targetId.length <= 1) return;
-      const target = document.querySelector(targetId);
-      if (!target) return;
-      e.preventDefault();
-      const headerOffset = 72;
-      const top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    });
+  burger.addEventListener('click', function () {
+    var open = bar.classList.toggle('nav-open');
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
   });
+  bar.querySelectorAll('.nav a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+  document.addEventListener('click', function (e) { if (bar.classList.contains('nav-open') && !bar.contains(e.target)) closeMenu(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
 
-  // ---------- Active nav link on scroll ----------
-  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
-  const sections = navLinks
-    .map((link) => document.querySelector(link.getAttribute('href')))
-    .filter(Boolean);
+  /* ---------- Active section highlight ---------- */
 
-  function updateActiveNav() {
-    const scrollPos = window.scrollY + 100;
-    let currentIndex = 0;
-
-    sections.forEach((section, i) => {
-      if (section.offsetTop <= scrollPos) currentIndex = i;
-    });
-
-    navLinks.forEach((link) => link.classList.remove('active'));
-    if (navLinks[currentIndex]) navLinks[currentIndex].classList.add('active');
-  }
-
-  window.addEventListener('scroll', updateActiveNav, { passive: true });
-  updateActiveNav();
-
-  // ---------- Scroll reveal ----------
-  const revealTargets = document.querySelectorAll(
-    '.section-head, .about-body, .skill-card, .project-feature, .gallery-item, .experience-card, .education-card, .contact-grid'
-  );
-  revealTargets.forEach((el) => el.classList.add('reveal'));
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-    revealTargets.forEach((el) => observer.observe(el));
-  } else {
-    revealTargets.forEach((el) => el.classList.add('is-visible'));
-  }
-
-  // ---------- Back to top ----------
-  const backToTop = document.getElementById('back-to-top');
-  if (backToTop) {
-    window.addEventListener(
-      'scroll',
-      () => {
-        backToTop.classList.toggle('visible', window.scrollY > 480);
-      },
-      { passive: true }
-    );
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('#portfolio-nav .nav-link[data-section]'));
+  function setActive(id) {
+    navLinks.forEach(function (l) {
+      var on = l.getAttribute('data-section') === id;
+      l.classList.toggle('is-active', on);
+      if (on) l.setAttribute('aria-current', 'true'); else l.removeAttribute('aria-current');
     });
   }
+  function spy() {
+    if (current !== 'portfolio') return;
+    var line = window.innerHeight * 0.35, active = null;
+    SECTIONS.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= line) active = id;
+    });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 6) active = 'contact';
+    setActive(active);
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { spy(); ticking = false; });
+  }, { passive: true });
 
-  // ---------- Dashboard lightbox ----------
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxClose = document.getElementById('lightbox-close');
-  let lastFocused = null;
+  /* ---------- Screenshot lightbox ---------- */
 
-  function openLightbox(src, alt) {
-    if (!lightbox || !lightboxImg) return;
-    lastFocused = document.activeElement;
-    lightboxImg.src = src;
-    lightboxImg.alt = alt || 'Dashboard preview';
-    lightbox.hidden = false;
-    lightboxClose.focus();
+  var dlg = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lb-img');
+  var lbPh = document.getElementById('lb-ph');
+  var lbTitle = document.getElementById('lb-title');
+  var lbCount = document.getElementById('lb-count');
+  var shots = Array.prototype.slice.call(document.querySelectorAll('.shot-btn'));
+  var idx = 0;
+
+  function showShot(i) {
+    idx = (i + shots.length) % shots.length;
+    var btn = shots[idx];
+    var img = btn.querySelector('img');
+    var title = btn.parentNode.querySelector('h4').textContent;
+    lbImg.hidden = false; lbPh.hidden = true;
+    lbImg.onerror = function () { lbImg.hidden = true; lbPh.hidden = false; };
+    lbImg.alt = img.alt;
+    lbImg.src = img.getAttribute('src');
+    lbTitle.textContent = title;
+    lbCount.textContent = (idx + 1) + ' of ' + shots.length;
+  }
+  function openShot(i) {
+    showShot(i);
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
     document.body.style.overflow = 'hidden';
   }
-
-  function closeLightbox() {
-    if (!lightbox) return;
-    lightbox.hidden = true;
-    lightboxImg.src = '';
+  function closeShot() {
+    if (typeof dlg.close === 'function') dlg.close(); else dlg.removeAttribute('open');
     document.body.style.overflow = '';
-    if (lastFocused) lastFocused.focus();
   }
-
-  document.querySelectorAll('.gallery-trigger').forEach((trigger) => {
-    trigger.addEventListener('click', () => {
-      const item = trigger.closest('.gallery-item');
-      if (item && item.classList.contains('img-missing')) return; // no real image yet
-      const fullSrc = trigger.getAttribute('data-full');
-      const img = trigger.querySelector('img');
-      openLightbox(fullSrc, img ? img.alt : '');
-    });
+  shots.forEach(function (b, i) { b.addEventListener('click', function () { openShot(i); }); });
+  document.getElementById('lb-close').addEventListener('click', closeShot);
+  document.getElementById('lb-prev').addEventListener('click', function () { showShot(idx - 1); });
+  document.getElementById('lb-next').addEventListener('click', function () { showShot(idx + 1); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) closeShot(); });
+  dlg.addEventListener('close', function () { document.body.style.overflow = ''; });
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); showShot(idx - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); showShot(idx + 1); }
   });
 
-  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-
-  if (lightbox) {
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox && !lightbox.hidden) closeLightbox();
-  });
-});
-
-</script>
-
-
-<script>
-(function(){
-  const welcome=document.getElementById('welcome-screen');
-  const enter=document.getElementById('enter-portfolio');
-  if(!welcome || !enter) return;
-  document.body.classList.add('welcome-active');
-  enter.addEventListener('click', function(){
-    welcome.classList.add('is-hidden');
-    document.body.classList.remove('welcome-active');
-    setTimeout(function(){ welcome.remove(); }, 900);
-  });
+  /* ---------- Start ---------- */
+  syncRoute(true);
 })();
 </script>
 </body>
